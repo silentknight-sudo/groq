@@ -21,7 +21,7 @@ const features = [
   ['★', 'Premium Quality', 'Accessories'],
 ]
 const included = ['4 Camera', 'DVR / NVR', '500GB Hard Disk', 'Power Supply', 'BNC Connectors & Cable', 'Installation', 'FREE Mobile App Setup']
-const perfect = ['Home', 'Office', 'Society', 'Shop', 'Factory', 'Warehouse']
+const perfect = [['Home', 'img/home.jpg'], ['Office'], ['Society'], ['Shop'], ['Factory'], ['Warehouse']]
 const buildSteps = [
   ['01', 'Mount', 'Rigid wall bracket rated for outdoor use.'],
   ['02', 'Housing', 'Weatherproof IP66 shell with sun hood.'],
@@ -89,9 +89,14 @@ function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], [0, 250])
   const o = useTransform(scrollYProgress, [0, 0.8], [1, 0])
   const s = useTransform(scrollYProgress, [0, 1], [1, 0.85])
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const bgS = useTransform(scrollYProgress, [0, 1], [1.05, 1.25])
   const words = 'HD & IP CAMERA'.split(' ')
   return (
     <section id="top" ref={ref} className="hero">
+      <motion.div className="hero-photo" style={{ y: bgY, scale: bgS, backgroundImage: 'url(img/hero.jpg)' }}
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.4 }} />
+      <div className="hero-shade" />
       <div className="grid-bg" />
       <motion.div className="hero-inner" style={{ y, opacity: o, scale: s }}>
         <motion.img src="logo.png" alt="India Mate CCTV & Security Services" className="hero-logo"
@@ -161,6 +166,28 @@ function BuildSection() {
           </div>
           <div className="bar"><motion.div style={{ width: bar }} /></div>
         </div>
+      </div>
+    </section>
+  )
+}
+
+function Installation() {
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'center center'] })
+  const clip = useTransform(scrollYProgress, [0, 1], ['inset(20% 30% 20% 0% round 28px)', 'inset(0% 0% 0% 0% round 28px)'])
+  const imgS = useTransform(scrollYProgress, [0, 1], [1.3, 1])
+  const points = ['Trained, uniformed technicians', 'Neat concealed cabling', 'Mobile app set up on the spot', '1 year warranty + after-sales support']
+  return (
+    <section ref={ref} className="section install">
+      <motion.div className="install-img" style={{ clipPath: clip }}>
+        <motion.img src="img/installer.jpg" alt="India Mate technician installing a CCTV camera" style={{ scale: imgS }} />
+      </motion.div>
+      <div className="install-copy">
+        <motion.span className="eyebrow" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }}>Expert installation team</motion.span>
+        <motion.h2 variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={1}>Installed right,<br />the first time</motion.h2>
+        <ul>{points.map((t, i) => (
+          <motion.li key={t} variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true }} custom={i + 2}><i>✓</i>{t}</motion.li>
+        ))}</ul>
       </div>
     </section>
   )
@@ -255,8 +282,8 @@ function Perfect() {
     <section className="section">
       <div className="head"><span className="eyebrow">Perfect for</span><h2>Every space you care about</h2></div>
       <div className="perfect">
-        {perfect.map((p, i) => (
-          <motion.div key={p} className="pf" initial={{ opacity: 0, rotateX: 60, y: 40 }} whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
+        {perfect.map(([p, img], i) => (
+          <motion.div key={p} className={`pf ${img ? 'has-img' : ''}`} style={img ? { backgroundImage: `linear-gradient(180deg, transparent 40%, rgba(4,15,46,.9)), url(${img})` } : undefined} initial={{ opacity: 0, rotateX: 60, y: 40 }} whileInView={{ opacity: 1, rotateX: 0, y: 0 }}
             viewport={{ once: true }} transition={{ delay: i * 0.07, duration: 0.6 }} whileHover={{ scale: 1.06 }}>{p}</motion.div>
         ))}
       </div>
@@ -300,6 +327,7 @@ export default function App() {
       <Hero />
       <BuildSection />
       <Features />
+      <Installation />
       <Packages />
       <Included />
       <Trust />

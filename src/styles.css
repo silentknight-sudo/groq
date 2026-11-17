@@ -118,3 +118,14 @@ footer { margin-top: 100px; color: var(--muted); font-size: 13px; }
 
 .hero-logo { display: block; width: min(340px, 75vw); margin: 0 auto 22px; background: #fff; border-radius: 22px; padding: 14px 22px; box-shadow: 0 25px 60px -20px rgba(31,92,255,0.7); }
 .foot-logo { display: block; width: 180px; margin: 0 auto 16px; background: #fff; border-radius: 14px; padding: 8px 12px; }
+
+.hero-photo { position: absolute; inset: -5%; background-size: cover; background-position: center; }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,15,46,.55), rgba(4,15,46,.75) 60%, #040f2e); }
+.install { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
+.install-img { overflow: hidden; border-radius: 28px; aspect-ratio: 4/3; max-width: 100%; }
+.install-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.install-copy ul { list-style: none; margin-top: 28px; display: grid; gap: 14px; font-size: 18px; }
+.install-copy li { display: flex; align-items: center; gap: 12px; }
+.install-copy li i { font-style: normal; width: 26px; height: 26px; border-radius: 50%; background: var(--yellow); color: #111; display: grid; place-items: center; font-size: 13px; flex: none; }
+@media (max-width: 860px) { .install { grid-template-columns: 1fr; gap: 32px; } }
+.pf.has-img { background-size: cover; background-position: center; }
