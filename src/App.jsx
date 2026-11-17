@@ -21,7 +21,7 @@ const features = [
   ['★', 'Premium Quality', 'Accessories'],
 ]
 const included = ['4 Camera', 'DVR / NVR', '500GB Hard Disk', 'Power Supply', 'BNC Connectors & Cable', 'Installation', 'FREE Mobile App Setup']
-const perfect = [['Home', 'img/home.jpg'], ['Office'], ['Society'], ['Shop'], ['Factory'], ['Warehouse']]
+const perfect = ['Home', 'Office', 'Society', 'Shop', 'Factory', 'Warehouse'].map((n) => [n, `img/${n.toLowerCase()}.jpg`])
 const buildSteps = [
   ['01', 'Mount', 'Rigid wall bracket rated for outdoor use.'],
   ['02', 'Housing', 'Weatherproof IP66 shell with sun hood.'],
