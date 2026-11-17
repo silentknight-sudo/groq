@@ -74,7 +74,7 @@ function Nav() {
   return (
     <header className="nav">
       <motion.div className="progress" style={{ scaleX: w }} />
-      <a href="#top" className="logo"><img src="/logo.png" alt="India Mate CCTV & Security Services" /></a>
+      <a href="#top" className="logo"><img src="logo.png" alt="India Mate CCTV & Security Services" /></a>
       <nav>
         <a href="#build">Product</a><a href="#packages">Packages</a><a href="#included">Included</a>
         <a className="btn btn-sm" href={`tel:${PHONES[0]}`}>Call Now</a>
@@ -94,7 +94,7 @@ function Hero() {
     <section id="top" ref={ref} className="hero">
       <div className="grid-bg" />
       <motion.div className="hero-inner" style={{ y, opacity: o, scale: s }}>
-        <motion.img src="/logo.png" alt="India Mate CCTV & Security Services" className="hero-logo"
+        <motion.img src="logo.png" alt="India Mate CCTV & Security Services" className="hero-logo"
           initial={{ opacity: 0, scale: 0.7, rotateX: -40 }} animate={{ opacity: 1, scale: 1, rotateX: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} />
         <motion.div className="pill" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
           📍 Delhi · Noida · Greater Noida
@@ -276,7 +276,7 @@ function Final() {
           ))}
         </div>
       </motion.div>
-      <footer><img src="/logo.png" alt="India Mate" className="foot-logo" />© India Mate CCTV & Security Services — Your trusted security partner</footer>
+      <footer><img src="logo.png" alt="India Mate" className="foot-logo" />© India Mate CCTV & Security Services — Your trusted security partner</footer>
     </section>
   )
 }
